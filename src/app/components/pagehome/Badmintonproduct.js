@@ -4,6 +4,8 @@ import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image';
+
 
 const Badmintonproduct = () => {
     const [products, setProducts] = useState([]);
@@ -78,7 +80,7 @@ const Badmintonproduct = () => {
                     {/* Sidebar */}
                     <div className="md:w-1/3 h-auto mb-4 md:mb-0 border">
                         <div className="h-full p-6 rounded-lg">
-                           
+
 
                             <div className="flex flex-col md:flex-row"></div>
                             <img src="https://www.tokyoweekender.com/wp-content/uploads/2019/10/Kento-Momota.jpg"
@@ -86,11 +88,11 @@ const Badmintonproduct = () => {
                                 className=" w-[100%] h-[90%] object-cover rounded"
                             />
                             <Link href="/allproduct">
-                            <button type="button" className=" mt-[10%] focus:outline-none text-white  bg-orange-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
-                                Xem Thêm 
-                            </button>
+                                <button type="button" className=" mt-[10%] focus:outline-none text-white  bg-orange-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
+                                    Xem Thêm
+                                </button>
                             </Link>
-                           
+
 
 
 
@@ -101,15 +103,18 @@ const Badmintonproduct = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-[10px] md:w-2/3">
                         {currentProducts.map((product) => (
                             <Link href={`/allproduct/productslisting/${product.id}`} key={product.id}>
-                            <div className="border rounded-lg h-full p-4 bg-white shadow-md transition transform hover:scale-105" key={product.id}>
-                                <img src={product.images}
-                                    alt={product.name}
-                                    className="w-full h-80 object-cover rounded"
-                                />
-                                <h3 className="font-bold mt-2">{product.name}</h3>
-                                <p className="text-red-500">{product.price}.VND </p>
-                                <p className="text-green-500">{product.status}</p>
-                            </div>
+                                <div className="border rounded-lg h-full p-4 bg-white shadow-md transition transform hover:scale-105" key={product.id}>
+                                    <Image
+                                        src={product.images} // đường dẫn hình ảnh
+                                        alt={product.name}   // mô tả cho hình ảnh
+                                        width={500}          // chiều rộng của hình ảnh
+                                        height={320}         // chiều cao của hình ảnh
+                                        className="w-full h-80 object-cover rounded" // các class CSS
+                                    />
+                                    <h3 className="font-bold mt-2">{product.name}</h3>
+                                    <p className="text-red-500">{product.price}.VND </p>
+                                    <p className="text-green-500">{product.status}</p>
+                                </div>
                             </Link>
                         ))}
                     </div>
